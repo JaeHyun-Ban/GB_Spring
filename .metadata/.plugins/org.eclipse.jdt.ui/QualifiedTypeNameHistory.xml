@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.context.support.GenericApplicationContext"/>
+<fullyQualifiedTypeName name="javax.swing.Spring"/>
+<fullyQualifiedTypeName name="ex01.SpringTest"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Member"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="ex05.collection.Custom"/>
+<fullyQualifiedTypeName name="ex06.autowired.Document"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.GenericXmlApplicationContext"/>
+<fullyQualifiedTypeName name="ex06.autowired.Printer"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+<fullyQualifiedTypeName name="ex02.construct.Chef"/>
+<fullyQualifiedTypeName name="ex03.setter.DatabaseDev"/>
+<fullyQualifiedTypeName name="ex05.collection.MemberVO"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.AnnotationConfigApplicationContext"/>
+<fullyQualifiedTypeName name="ex02.construct.Hotel"/>
+<fullyQualifiedTypeName name="ex03.setter.MemberDAO"/>
+<fullyQualifiedTypeName name="ex04.quiz.Battery1"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+<fullyQualifiedTypeName name="ex04.quiz.Battery2"/>
+<fullyQualifiedTypeName name="ex04.quiz.Car"/>
+<fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+<fullyQualifiedTypeName name="ex04.quiz.Airplane"/>
+<fullyQualifiedTypeName name="ex04.quiz.IBattery"/>
+</qualifiedTypeNameHistroy>

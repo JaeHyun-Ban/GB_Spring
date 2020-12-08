@@ -1,0 +1,16 @@
+package ex03.setter;
+
+public class MemberDAO {
+
+	private DatabaseDev ds;
+	
+	//setter
+	public void setDs(DatabaseDev ds) {
+		this.ds = ds;
+	};
+	
+	
+	
+	
+	
+}

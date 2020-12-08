@@ -1,0 +1,10 @@
+package ex02.construct;
+
+public class Hotel {
+	
+	//멤버변수
+	private Chef chef;
+	
+	
+	
+}

@@ -1,0 +1,16 @@
+package ex02.construct;
+
+public class MainClass {
+	
+	public static void main(String[] args) {
+		
+		hotel h = new Hotel(chef);
+		
+		
+		
+		
+		
+	}
+	
+	
+}

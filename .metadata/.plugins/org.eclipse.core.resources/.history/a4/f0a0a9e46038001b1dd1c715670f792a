@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="ex05.collection.Custom">
+		<property name="lists">
+		<!-- 여기서 lists의 setter형식으로 값을 대입해준다 -->
+			<list>
+				<value>홍길동</value>
+				<value>이순신</value>
+				<value>홍길자</value>
+			</list>
+		</property>
+		
+		<!-- 컬렉션 객체타입 -->
+		<property name="vo">
+			<list>
+				<bean></bean>
+			</list>
+		</property>
+	</bean>
+
+
+
+
+</beans>

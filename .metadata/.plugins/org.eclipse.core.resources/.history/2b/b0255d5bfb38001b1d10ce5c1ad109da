@@ -1,0 +1,69 @@
+package ex08.javaconfig;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import ex02.construct.Chef;
+
+@Configuration //이 클래스가 스프링 설정파일이라는것을 표기(xml문서를 대신한다)
+public class JavaConfig {
+	
+	//@Bean이 붙은 메서드를 스프링컨테이너가 객체로 생성한다.
+	@Bean
+	public Chef chef() {
+		return new Chef();
+	}
+
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

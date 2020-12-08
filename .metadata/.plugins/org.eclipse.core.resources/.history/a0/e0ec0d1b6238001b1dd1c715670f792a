@@ -1,0 +1,15 @@
+package ex05.collection;
+
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class MainClass {
+	public static void main(String[] args) {
+		
+		GenericXmlApplicationContext ctx = 
+				new GenericXmlApplicationContext();
+		
+		ctx.getBean(requiredType);
+		
+		
+	}
+}

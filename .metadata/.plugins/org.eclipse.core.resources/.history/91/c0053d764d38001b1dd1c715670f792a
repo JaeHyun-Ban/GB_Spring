@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 이 친구가 객체가 되어 생성된거다 -->
+	<bean class="ex01.SpringTest" />
+
+	<!-- 호텔, 셰프 생성자 주입! -->
+	<!-- 호텔, 셰프 빈(객체)생성 -->
+	<bean id="chef" class="ex02.construct.Chef" />
+	<bean id="hotel" class="ex02.construct.Hotel" >
+		<constructor-arg ref="chef"></constructor-arg>
+
+	</bean>
+	
+	
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
