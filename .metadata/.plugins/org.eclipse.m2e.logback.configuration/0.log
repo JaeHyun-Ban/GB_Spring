@@ -2900,3 +2900,25 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2020-12-09 11:01:34,385 [Worker-97: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-12-09 11:01:34,386 [Worker-97: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\main\resources
 2020-12-09 11:01:34,386 [Worker-97: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:01:34,387 [Worker-97: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\test\resources
+2020-12-09 11:20:25,961 [Worker-104: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:20:25,962 [Worker-104: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\main\resources
+2020-12-09 11:20:25,963 [Worker-104: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:20:25,966 [Worker-104: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\test\resources
+2020-12-09 11:21:19,436 [Worker-105: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:21:19,437 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\main\resources
+2020-12-09 11:21:19,438 [Worker-105: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:21:19,438 [Worker-105: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\test\resources
+2020-12-09 11:26:25,038 [Worker-113: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:26:25,039 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\main\resources
+2020-12-09 11:26:25,040 [Worker-113: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:26:25,041 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\test\resources
+2020-12-09 11:26:56,582 [Worker-114: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:26:56,583 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\main\resources
+2020-12-09 11:26:56,585 [Worker-114: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:26:56,586 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\test\resources
+2020-12-09 11:35:02,239 [Worker-110: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:35:02,240 [Worker-110: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\main\resources
+2020-12-09 11:35:02,241 [Worker-110: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-09 11:35:02,242 [Worker-110: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Win10\Desktop\Backup\workspace\GookBe\GB_Spring\SpringMake\src\test\resources
+2020-12-09 11:41:04,822 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
