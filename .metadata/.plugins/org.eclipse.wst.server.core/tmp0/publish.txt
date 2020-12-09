@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Wed Dec 09 10:36:21 KST 2020
+org.eclipse.jst.jee.server\:SpringMake=C\:\\Users\\Win10\\Desktop\\Backup\\apache-tomcat-9.0.39\\wtpwebapps\\SpringMake
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Win10\\.m2\\repository\\org\\springframework\\spring-web\\5.0.7.RELEASE\\spring-web-5.0.7.RELEASE.jar=C\:\\Users\\Win10\\Desktop\\Backup\\apache-tomcat-9.0.39\\wtpwebapps\\SpringMake\\WEB-INF\\lib\\spring-web-5.0.7.RELEASE.jar
