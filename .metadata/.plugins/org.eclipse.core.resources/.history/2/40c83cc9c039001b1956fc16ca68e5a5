@@ -18,8 +18,7 @@ public class MainController {
 		
 		
 
-//		return "WEB-INF/views/home.jsp";//디스패쳐서블릿으로 반환
-		return "home";
+		return "WEB-INF/views/home.jsp";//위의 경로로 들어오면 home.jsp로 이동
 	}
 	
 	

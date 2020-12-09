@@ -21,7 +21,7 @@ xmlns="http://www.springframework.org/schema/beans"
 	</bean>
 	
 	<!-- 정석자원 맵핑 -js, css, html, img파일들에 대해서 컨트롤러를 거치지 않고 곧바로 보여주도록 설정 -->
-	<mvc:resources location="/resource/" mapping="/resource/**" />
+	<mvc:resources location="" mapping="/resource/**"></mvc:resources>
 
 
 

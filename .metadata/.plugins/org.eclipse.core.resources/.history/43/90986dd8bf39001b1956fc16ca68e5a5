@@ -14,14 +14,9 @@ xmlns="http://www.springframework.org/schema/beans"
 	<!-- 해당 패키지의 경로를 읽어서 @Controller이 붙어있는 클래스를 Bean으로 생성해준다 -->
 	<context:component-scan base-package="com.simple.controller" />
 
-	<!-- View합성기(ViewResolver) -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" /><!-- 경로 앞부분 -->
-		<property name="suffix" value=".jsp" /><!-- 경로 뒷부분,  -->
-	</bean>
-	
-	<!-- 정석자원 맵핑 -js, css, html, img파일들에 대해서 컨트롤러를 거치지 않고 곧바로 보여주도록 설정 -->
-	<mvc:resources location="/resource/" mapping="/resource/**" />
+	<!-- View합성기( -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+
 
 
 
