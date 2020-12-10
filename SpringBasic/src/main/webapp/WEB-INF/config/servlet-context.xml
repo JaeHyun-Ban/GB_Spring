@@ -26,8 +26,44 @@
 	<!-- 자바파일이 실제로 읽혀들어가는가를 확인(src/main/java 패키지 경로를 작성해준다) -->
 	<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
 	<!-- @Controller, @Component, @Repository, @Service 어노테이션이 부착되있는 클래스를 bean으로 생성합니다 -->
-	<context:component-scan base-package="com.simple.basic" />
+	<context:component-scan base-package="com.simple.controller" />
+	
+	<context:component-scan base-package="com.simple.service" /> <!-- 3nd방법 -->
+	<context:component-scan base-package="com.simple.dao"></context:component-scan>
 	<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+	
+	<!-- 서비스 클래스를 bean으로 생성 -->
+	<!-- <beans:bean id="service" class="com.simple.service.ScoreServiceImpl" /> -->
+	
+	
 	
 	
 </beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

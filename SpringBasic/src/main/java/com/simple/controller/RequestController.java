@@ -1,4 +1,4 @@
-package com.simple.basic;
+package com.simple.controller;
 
 import java.util.ArrayList;
 
@@ -101,7 +101,7 @@ public class RequestController {
 //	}
 	
 	//3nd
-	//커멘드 객체를 사용하는 방법
+	//커멘드 객체를 사용하는 방법(많이 사용됨)
 	@RequestMapping("/param")
 	public String param(ReqVO vo) {
 		
@@ -122,7 +122,7 @@ public class RequestController {
 		return "request/req_quiz01";
 	}
 	
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(
 			@RequestParam("id") String id,
 			@RequestParam("pw") String pw) {

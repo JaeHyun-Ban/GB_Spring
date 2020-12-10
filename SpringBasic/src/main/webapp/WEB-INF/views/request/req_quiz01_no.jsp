@@ -9,6 +9,7 @@
 <body>
 	
 	<h1>로그인에 실패하였습니다</h1>
+	<a href="req_quiz01">로그인 시도</a>
 	
 	
 </body>
