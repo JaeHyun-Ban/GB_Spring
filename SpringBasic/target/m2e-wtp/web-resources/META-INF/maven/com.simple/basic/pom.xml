@@ -111,20 +111,52 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!-- Test(일부분만 실행시켜 테스트를 할 수 있게 도와줌 -->
+		<!-- JUnit_Test(일부분만 실행시켜 테스트를 할 수 있게 도와줌)-->
+		<!-- 스프링 버전과 호환이 안되는 문제 때문에 4.12버전으로 변경 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-	
-	<!-- 필요한 라이브러리를 하나씩 추가... -->	
-		
+
+
+		<!-- 필요한 라이브러리를 하나씩 추가... -->
+
+		<!-- 오라클 커넥터 18c -->
+		<dependency>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>19.3.0.0</version>
+		</dependency>
+
+		<!-- spring-JDBC: 마이바티스, 스프링에서 제공하는 템플릿JDBC를 사용하는데 반드시 필요한 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- 커넥션풀 라이브러맃(HikariCP): 데이터베이스 연결작업 -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>2.7.8</version>
+		</dependency>
+
+		<!-- spring-test(JUnit단위 테스트와 접목시켜서 사용) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
-	
-	
-	
+
+
+
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
@@ -179,7 +211,7 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-			
+
 			<!-- 라이브러리를 다운받으면 해적해주는 plugins -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -193,8 +225,8 @@
 					<showDeprecation>true</showDeprecation>
 				</configuration>
 			</plugin>
-			
-			
+
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>

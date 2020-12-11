@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.simple.command.ScoreVO;
 import com.simple.service.ScoreService;
@@ -48,7 +49,7 @@ public class ScoreController {
 	
 	
 	//점수목록화면 요청
-	@RequestMapping("scoreList")
+	@RequestMapping("/scoreList") //'/'이거 빼도됨
 	public String scoreList(Model model) {
 		
 		ArrayList<ScoreVO> list =  service.getList();
@@ -57,6 +58,16 @@ public class ScoreController {
 		return "service/scoreList";
 	}
 	
+	
+	//점수 삭제 요청
+	@RequestMapping("/scoreDelete")
+	public String scoreDelete(@RequestParam("num") int index) {
+		
+		service.scoreDelete(index);
+		
+		
+		return "redirect:/service/scoreList";
+	}
 	
 }
 

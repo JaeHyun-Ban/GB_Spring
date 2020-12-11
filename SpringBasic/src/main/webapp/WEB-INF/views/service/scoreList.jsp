@@ -11,10 +11,62 @@
 
 	<h2>점수 결과 확인</h2>
 	<!-- 데이터 처리하기 -->
-	<c:forEach var="i" begin="">
-	
+	<c:forEach var="vo" items="${list }"><!-- varStatus: var변수의 상태 -->
+		번호: ${vo.num}<!-- var변수의 index번호 -->
+		이름: ${vo.name }
+		국어: ${vo.kor }
+		영어: ${vo.eng }
+		수학: ${vo.math }<br/>
+		<button type="button" onclick="location.href='scoreDelete?num=${vo.num}'">점수삭제</button>
+		<hr/>
+		
 	</c:forEach>
+	<a href="scoreRegist">점수추가 등록</a>
 	
+	<!-- 사용안함 -->
+	<script type="text/javascript">
+		document.querySelector(".del").onclick = function(){
+			
+		}	
+	
+	
+	
+	</script>
+
+
+
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

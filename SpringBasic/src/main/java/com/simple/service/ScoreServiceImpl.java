@@ -29,7 +29,13 @@ public class ScoreServiceImpl implements ScoreService {
 		
 		return scoreDAO.getList();//서비스 영역에서 처리할게 없다면 바로 리턴
 	}
-
+	
+	
+	@Override
+	public void scoreDelete(int index) {
+		scoreDAO.scoreDelete(index);
+		
+	}
 }
 
 
