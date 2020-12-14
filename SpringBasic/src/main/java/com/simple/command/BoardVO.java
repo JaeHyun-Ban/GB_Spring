@@ -17,6 +17,11 @@ public class BoardVO {
 		this.title = title;
 		this.content = content;
 	}
+	
+	@Override
+	public String toString() {
+		return "BoardVO [num=" + num + ", name=" + name + ", title=" + title + ", content=" + content + "]\n";
+	}
 
 	public int getNum() {
 		return num;

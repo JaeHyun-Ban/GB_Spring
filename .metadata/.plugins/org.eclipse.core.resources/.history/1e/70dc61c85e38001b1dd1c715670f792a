@@ -1,6 +1,0 @@
-package ex05.collection;
-
-public class Custom {
-	
-	//멤버변수로 컬렉션 타입
-}

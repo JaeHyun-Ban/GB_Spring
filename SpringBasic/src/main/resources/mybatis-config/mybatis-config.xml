@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- mapper에서 사용할 단축키를 typeAliases에 기술한다 -->
+<configuration>
+	
+	<typeAliases>
+		<!-- ScoreVO경로 + ScoreVO로 별명 추가 -->
+		<typeAlias type="com.simple.command.ScoreVO" alias="ScoreVO"/>
+		
+		<typeAlias type="com.simple.command.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.simple.mapper.BoardMapper" alias="BoardMapper"/>
+		
+	</typeAliases>
+	
+	
+	
+	
+</configuration>
+  
+  
+  

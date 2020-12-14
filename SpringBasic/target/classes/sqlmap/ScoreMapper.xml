@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dtd라는 파일을 참조하는 마이바티스 문서라는 것을 선언 -->
+  
+<!-- 경로 확인 -->
+<mapper namespace="com.simple.mapper.ScoreMapper">
+	
+	<insert id="scoreRegist">
+		insert into score 
+		values(score_seq.nextval, #{name}, #{kor}, #{eng}, #{math})
+	</insert>
+	
+	<!-- 마이바티스Config를 사용해서 경로를 미리 작성해 별명 지정 가능함 -->
+	<!-- <select id="getList" resultType="com.simple.command.ScoreVO"> -->
+	<select id="getList" resultType="ScoreVO">
+		select * from score
+	</select>
+	
+	<delete id="scoreDelete">
+		delete from score where num = #{index}
+	</delete>
+	
+	
+	
+</mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -42,7 +42,7 @@ public class ScoreController {
 	@RequestMapping("/scoreForm")
 	public String scoreForm(ScoreVO vo) {
 		
-		service.scoreRegits(vo);
+		service.scoreRegist(vo);
 		
 		return "service/scoreResult";
 	}
