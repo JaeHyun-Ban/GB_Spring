@@ -137,7 +137,7 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<!-- 커넥션풀 라이브러맃(HikariCP): 데이터베이스 연결작업 -->
+		<!-- 커넥션풀 라이브러리(HikariCP): 데이터베이스 연결작업 -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>

@@ -1,8 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 외부설정파일을 읽어서 사용할 수 있도록 해주는 클래스 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- 외부설정 파일을 사용하기 위해 `classpath:/`를 사용한다(src/main 기준 아래를 찾아) -->
+		<property name="location" value="classpath:/db-config/Hikari.properties" />
+	</bean>
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<!-- 히카리 설정파일(bean): 위에서 미리 지정한 설정을 끌어다 쓴다(${}) -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${ds.driverClassName}" />
+		<property name="jdbcUrl" value="${ds.jdbcUrl}" />
+		<property name="username" value="${ds.username}" />
+		<property name="password" value="${ds.password}" />
+	</bean>
+	
+	<!-- 히카리 풀(히카리 설정파일(bean) 주입) -->
+	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+	
+	<!-- 스프링에서 제공하는 JDBCTemplate(생략?) -->
+	
+	<!-- 마이바티스 핵심 객체 생성: SqlSessionFactoryBean(중요) -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds" />
+		<!-- 마이바티스 구현체 mapper를 묶어서 관리하기 위한 결로 설정 -->
+		<!-- <property name="mapperLocations" value="classpath:/sqlmap/*.xml" /> -->
+		<!-- 마이바티스의 부가적인 설정파일 위치 잡기 -->
+		<!-- <property name="configLocation" value="classpath:/mybatis-config/mybatis-config.xml" /> -->
+	</bean>
+	
+	
+	<!-- 매퍼 인터페이스의 경로를 지정 -->
+
+
+
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

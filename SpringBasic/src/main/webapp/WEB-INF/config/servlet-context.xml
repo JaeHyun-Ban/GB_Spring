@@ -29,7 +29,7 @@
 	<context:component-scan base-package="com.simple.controller" />
 	
 	<context:component-scan base-package="com.simple.service" /> <!-- 3nd방법 -->
-	<context:component-scan base-package="com.simple.dao"></context:component-scan>
+	<context:component-scan base-package="com.simple.dao" />
 	<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
 	
 	<!-- 서비스 클래스를 bean으로 생성 -->

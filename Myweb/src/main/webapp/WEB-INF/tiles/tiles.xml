@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 타일즈 xml설정 -->
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+  "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<!-- 타일즈 문서 선언 -->
+<tiles-definitions>
+
+	<!-- 1. 타일즈 파일이 가져야하는 layout을 정의(단, 공통화면 */*보다 위에 위치해야 한다) -->
+	<!-- template: basedDefault로 정의한 레이아웃의 jsp 공통 모형(틀)이다 -->
+	<definition name="basedDefault" template="/WEB-INF/tiles/templateDefault.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
+	<!-- baseDefault를 상속받고, 동적화면으로 구성 -->
+	<!-- name값은 controller에서 돌아오는 return값 -->
+	<definition name="user/*" extends="basedDefault"><!-- user/*: user경로로 들어오는 모든 것 -->
+		<put-attribute name="body" value="/WEB-INF/views/user/{1}.jsp" />
+	</definition>
+	
+	<!-- 2. 공통 뷰 모듈 맵핑 -->
+	<definition name="base" template="/WEB-INF/tiles/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+	
+	<definition name="*" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp"/>
+	</definition>
+	
+	<!-- 주소/주소: 두개로 맵핑되는 모든경로를 인식, 맵핑간의 순서에 주의(2단구조) -->
+	<definition name="*/*" extends="base">
+		<!-- `*`가 순서대로 들어감 -->
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- 3단 구조: 거의 안쓰임..? -->
+	<definition name="*/*/*" extends="base">
+		<!-- `*`가 순서대로 들어감 -->
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+	<!-- ================================================ -->
+	<!-- 3. 공통모듈로 사용하지 않고, 직접 맵핑형태로 사용하는 경우 -->
+	<!-- 올..신기한데? -->
+	<definition name="aaa" template="/WEB-INF/views/aaa.jsp" />
+	<!-- 요청이 다름 -->
+	<definition name="test/bbb" template="/WEB-INF/views/test/bbb.jsp"/>
+	
+
+</tiles-definitions>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
