@@ -6,7 +6,9 @@
 
 <!-- 타일즈 문서 선언 -->
 <tiles-definitions>
-
+	
+	<!-- css링크를 함께 넣어도 작동한다 -->
+	
 	<!-- 1. 타일즈 파일이 가져야하는 layout을 정의(단, 공통화면 */*보다 위에 위치해야 한다) -->
 	<!-- template: basedDefault로 정의한 레이아웃의 jsp 공통 모형(틀)이다 -->
 	<definition name="basedDefault" template="/WEB-INF/tiles/templateDefault.jsp">
@@ -20,7 +22,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/user/{1}.jsp" />
 	</definition>
 	
-	<!-- 2. 공통 뷰 모듈 맵핑 -->
+	<!-- 공통맵핑은 가장 아래쪽, 나머지는 위 -->
+	<!-- 2. 공통 뷰 모듈 맵핑 (공통은 언제나 주의해서 작성할 것)-->
 	<definition name="base" template="/WEB-INF/tiles/template.jsp">
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="body" value="" />

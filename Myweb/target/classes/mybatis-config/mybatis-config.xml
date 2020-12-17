@@ -4,9 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <!-- mapper에서 사용할 단축경로들을 typeAlias에 기술 -->
-<!-- <configuration>
+<configuration>
 	<typeAliases>
-		<typeAlias type="com.team404."/>
+		<typeAlias type="com.team404.freeboard.mapper.FreeBoardMapper" alias="FreeBoardMapper"/>
+		
+		<typeAlias type="com.team404.command.FreeBoardVO" alias="FreeBoardVO"/>
+		
 	</typeAliases>
 
-</configuration> -->
+</configuration>

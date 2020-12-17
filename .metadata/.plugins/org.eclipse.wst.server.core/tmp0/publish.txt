@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Tue Dec 15 17:33:12 KST 2020
+#Wed Dec 16 18:06:57 KST 2020
 org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Win10\\.m2\\repository\\org\\springframework\\spring-web\\5.2.11.RELEASE\\spring-web-5.2.11.RELEASE.jar=C\:\\Users\\Win10\\Desktop\\Backup\\apache-tomcat-9.0.39\\wtpwebapps\\Myweb\\WEB-INF\\lib\\spring-web-5.2.11.RELEASE.jar
 org.eclipse.jst.jee.server\:Myweb=C\:\\Users\\Win10\\Desktop\\Backup\\apache-tomcat-9.0.39\\wtpwebapps\\Myweb

@@ -1,0 +1,11 @@
+CREATE TABLE freeboard(
+    bno number(10),
+    title varchar2(200) not null,
+    writer varchar2(50) not null,
+    content varchar2(2000),
+    regdate date default sysdate,
+    updatedate date default sysdate
+);
+ALTER TABLE freeboard ADD CONSTRAINT freeboard_pk PRIMARY KEY (bno);
+CREATE SEQUENCE freeboard_seq INCREMENT BY 1 START WITH 1 NOCACHE;
+///////////////////////////////////////////////////////////////////////////

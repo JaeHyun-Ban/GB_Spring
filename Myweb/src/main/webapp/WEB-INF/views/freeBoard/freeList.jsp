@@ -1,7 +1,8 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     
-<%@ include file="../include/header.jsp" %>
     <section>
         <div class="container-fluid">
             <div class="row">
@@ -37,27 +38,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <!-- vo란 이름으로 꺼내주기 -->
+                        <c:forEach var="vo" items="${list }" >
                             <tr>
-                                <td>1</td>
-                                <td><a href="##">첫글</a></td>
-                                <td>홍길순</td>
-                                <td>~~~~~</td>
-                                <td>~~~~~</td>
+                                <td>${vo.bno }</td>
+                                <td><a href="freeDetail?bno=${vo.bno }">${vo.title }</a></td>
+                                <td>${vo.writer }</td>
+                                <td><fmt:formatDate value="${vo.regdate }" pattern="yyyy년MM월dd일 hh시mm분ss초 "/></td>
+                                <td><fmt:formatDate value="${vo.updatedate }" pattern="yyyy년MM월dd일 hh시mm분"/></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><a href="##">두글</a></td>
-                                <td>홍길순</td>
-                                <td>~~~~~</td>
-                                <td>~~~~~</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><a href="##">세글</a></td>
-                                <td>홍길순</td>
-                                <td>~~~~~</td>
-                                <td>~~~~~</td>
-                            </tr>
+						</c:forEach>
                         </tbody>
                         
                     </table>
@@ -76,7 +66,7 @@
                         <li><a href="#">5</a></li>
                         <li><a href="#">다음</a></li>
                     </ul>
-                    <button type="button" class="btn btn-info">글쓰기</button>
+                    <button type="button" class="btn btn-info" onclick="location.href='freeRegist'">글쓰기</button>
                     </div>
 		    </form>
 
@@ -85,5 +75,50 @@
         </div>
 	</section>
 
-<%@ include file="../include/footer.jsp" %>
+	<script>
+		window.onload = function(){
+			//history.state객체를 통해서 기록정보 확인 가능
+			if(history.state === '') return;
+			
+			var msg = "${msg}"; //컨트롤러에서 넘어온 메세지
+			if(msg !== ''){
+				alert(msg);	
+			}
+			//history.push = 새로운 값 넣기
+			
+			//https://developer.mozilla.org/ko/docs/Web/API/History/replaceState
+			//현재 history를 수정해 메서드의 매개변수로 전달된(오브젝트, title, URL)로 대체한다
+			//브라우저의 기록을 새롭게 변경(데이터, 페이지제목, 변경할 주소(url)                                                                                                                                                )
+			history.replaceState('', null, null);
+		}
+	
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dtd파일을 이용 마이바티스 문서라고 선언 -->
+
+<!-- namespace는 alias로 단축 -->
+<mapper namespace="com.team404.freeboard.mapper.FreeBoardMapper">
+
+	<insert id="regist">
+		INSERT INTO freeboard(bno, title, writer, content)
+		VALUES(freeboard_seq.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<!-- 최신글위로오기: bno를 역순으로 가져옥 -->
+	<select id="getList" resultType="FreeBoardVO">
+		SELECT * FROM freeboard ORDER BY bno DESC
+	</select>
+	
+	<!-- 상세 게시글 보기 -->
+	<select id="getContent" resultType="FreeBoardVO">
+		SELECT * FROM freeboard WHERE bno = #{bno}
+	</select>
+	
+	<!-- 게시글 수정(update) -->
+	<update id="update">
+		UPDATE freeboard 
+		SET writer = #{writer}, 
+			title = #{title}, 
+			content = #{content}, 
+			updatedate = sysdate 
+			WHERE bno = #{bno} 
+	</update>
+	
+	<!-- 게시글 삭제(delete) -->
+	<delete id="delete">
+		DELETE FROM freeboard WHERE bno = #{bno}
+	</delete>
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
