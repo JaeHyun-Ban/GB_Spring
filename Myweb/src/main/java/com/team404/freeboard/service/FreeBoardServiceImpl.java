@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team404.command.FreeBoardVO;
+import com.team404.common.util.Criteria;
 import com.team404.freeboard.mapper.FreeBoardMapper;
 
 @Service("freeBoardService") //이 패키지가 읽히고 있는 지 확인(component scan)
@@ -21,9 +22,18 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 //		System.out.println(vo.toString());
 	}
 	
+//	@Override //기존
+//	public ArrayList<FreeBoardVO> getList() {
+//		return freeBoardMapper.getList();
+//	}
+	@Override //페이징처리
+	public ArrayList<FreeBoardVO> getList(Criteria cri) {
+		return freeBoardMapper.getList(cri);
+	}
+	
 	@Override
-	public ArrayList<FreeBoardVO> getList() {
-		return freeBoardMapper.getList();
+	public int getTotal(Criteria cri) {
+		return freeBoardMapper.getTotal(cri);
 	}
 	
 	@Override
@@ -41,5 +51,24 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 		return freeBoardMapper.delete(bno);
 	}
+
+	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

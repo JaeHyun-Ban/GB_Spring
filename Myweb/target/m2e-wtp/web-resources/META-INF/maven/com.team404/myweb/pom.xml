@@ -196,6 +196,14 @@
 			<version>3.0.8</version>
 		</dependency>
 
+		<!-- jackson-databind(JSON): REST API로 보내는 객체를 자동으로JSON형으로 변환시켜줌-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
+
 
 	</dependencies>
 

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team404.command.FreeBoardVO;
+import com.team404.common.util.Criteria;
+import com.team404.common.util.PageVO;
 import com.team404.freeboard.service.FreeBoardService;
 
 @Controller // bean생성
@@ -25,11 +27,32 @@ public class freeBoardController {
 	@Qualifier("freeBoardService")
 	private FreeBoardService freeBoardService;
 
-	@RequestMapping("/freeList")
-	public String freeList(Model model) {
+	@RequestMapping("/freeList") //글 리스트
+	public String freeList(Model model, Criteria cri) {
 		// 화면으로 넘어갈 글정보를 가지고 갈 수 있도록 처리getList()로 조회한 결과를 리스트화면에 출력
-		ArrayList<FreeBoardVO> list = freeBoardService.getList();
-		model.addAttribute("list", list);//model에 담는 이름은 명확하게 작성할 것
+		
+		//1.기본 방식
+//		ArrayList<FreeBoardVO> list = freeBoardService.getList();
+//		model.addAttribute("list", list);//model에 담는 이름은 명확하게 작성할 것
+		
+		//2.페이지 방식(service수정)
+//		int total = freeBoardService.getTotal();
+//		PageVO pageVO = new PageVO(cri, total);//페이징 처리
+//		model.addAttribute("pageVO", pageVO);
+//		
+//		ArrayList<FreeBoardVO> list =  freeBoardService.getList(cri);
+//		model.addAttribute("list", list);
+		
+		//3. 검색과 페이지
+		ArrayList<FreeBoardVO> list =  freeBoardService.getList(cri);
+		
+		//getTotal(cri): cri를 매개변수로 주어 동적인 Total값을 구하도록 한다
+		int total = freeBoardService.getTotal(cri); 
+		PageVO pageVO = new PageVO(cri, total);//페이징 처리
+		
+		model.addAttribute("pageVO", pageVO);
+		model.addAttribute("list", list);
+		
 		return "freeBoard/freeList";
 	}
 

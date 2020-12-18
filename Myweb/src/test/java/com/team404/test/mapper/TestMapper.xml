@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dtd파일을 이용 마이바티스 문서라고 선언 -->
+
+<mapper namespace="com.team404.test.mapper.TestMapper">
+
+	<insert id="insertTest">
+		INSERT INTO freeboard(bno, title, writer, content)
+		VALUES (freeboard_seq.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<!-- <![CDATA[]]>: 마이바티스 XML문서에서 부등호를 사용할 때 문자열을 그대로 인식되도록 도와준다 -->
+	<!-- #{pageNum - 1}로 작성해도 괜찮음 -->
+	<select id="selectTest" resultType="FreeBoardVO">
+		<![CDATA[
+		select * 
+		from(select rownum as rn, a.*
+		from (select * 
+		        from freeboard
+		        ORDER BY bno DESC) a
+		     )
+		where rn > (#{pageNum} - 1) * #{amount} and rn <= #{pageNum} * #{amount}
+		]]>
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
