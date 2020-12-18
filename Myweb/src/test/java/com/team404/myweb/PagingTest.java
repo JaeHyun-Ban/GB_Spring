@@ -24,16 +24,18 @@ public class PagingTest {
 		System.out.println(testMapper);
 		for(int i = 1; i <= 100; i++) {
 			FreeBoardVO vo = new FreeBoardVO();
-			vo.setTitle("aa제목" + i);
-			vo.setWriter("aa작성자" + i);
-			vo.setContent("aa" + i);
-			
+
+			vo.setTitle("admin제목" + i);
+			vo.setWriter("admin작성자" + i);
+			vo.setContent("admin내용입니다" + i);
+		
 			testMapper.insertTest(vo);
 		}
 	}
 	/////////////////////////////////////////////////////
 	
-	@Test //데이터 조회 테스트(페이징처리)
+
+//	@Test //데이터 조회 테스트(페이징처리)
 	public void test2() {
 		Criteria cri = new Criteria();
 //		Criteria cri = new Criteria(3, 10);

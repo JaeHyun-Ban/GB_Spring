@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
+<<<<<<< HEAD
 <typeInfo handle="=SpringBasic/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.simple.service{BoardService.java[BoardService" modifiers="513" timestamp="1607650220106"/>
 <typeInfo handle="=SpringBasic/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.simple.dao{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1607653697811"/>
 <typeInfo handle="=Myweb/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.team404.freeboard.service{FreeBoardService.java[FreeBoardService" modifiers="513" timestamp="1608193855260"/>
+=======
+    <typeInfo handle="=SpringBasic/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.simple.service{BoardService.java[BoardService" modifiers="513" timestamp="1607650220106"/>
+    <typeInfo handle="=SpringBasic/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.simple.dao{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1607653697811"/>
+    <typeInfo handle="=Myweb/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.team404.freeboard.service{FreeBoardService.java[FreeBoardService" modifiers="513" timestamp="1608193855260"/>
+>>>>>>> 5c409714cfd8ab42213ebb99c85552646ca63434
 </typeInfoHistroy>

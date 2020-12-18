@@ -45,7 +45,8 @@ public class freeBoardController {
 		
 		//3. 검색과 페이지
 		ArrayList<FreeBoardVO> list =  freeBoardService.getList(cri);
-		
+		System.out.println(list.toString());
+
 		//getTotal(cri): cri를 매개변수로 주어 동적인 Total값을 구하도록 한다
 		int total = freeBoardService.getTotal(cri); 
 		PageVO pageVO = new PageVO(cri, total);//페이징 처리
