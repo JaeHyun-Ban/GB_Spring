@@ -6,7 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="$(vo"/>
 		<list key="findhistory">
+			<item value="$(vo"/>
 			<item value="System.out.println(c.getVo().get(0).getId());"/>
 		</list>
 		<list key="replacehistory">

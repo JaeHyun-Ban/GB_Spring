@@ -3,6 +3,7 @@ package com.team404.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,7 +50,7 @@ public class RestBasicController {
 		return null;
 	}
 
-
+	//
 	@GetMapping("/getPath/{sort}/{rank}/{page}")
 		public HashMap<String, Object> getPath(@PathVariable("sort") String sort,
 											   @PathVariable("rank") String rank,
@@ -72,6 +73,11 @@ public class RestBasicController {
 	//POST형식의 JSON형식으로 값을 받음, 객체로 반환
 	//1.화면에서 JSON형식으로 넘어오는 데이터를 @RequsetBody어노테이션으로 맵핑
 	//2.화면에서는 데이터를 보낼 때 content-type을 선언해서 데이터의 유형을 알려주어야 한다
+	
+	
+	//크로스도메인정책 - 서버가 다른경우, 스프링은 기본적으로 요청을 받아주지 않는데, 이런 요청을 허용시키는 옵션이다
+//	@CrossOrigin(origins = "*") //POST트로 받을 수 있게 열기(절 대 금 지)
+	@CrossOrigin(origins = "http://127.0.0.1:5501") //POST트로 받을 수 있게 열기(웬만해선)
 	@PostMapping("/getJson")
 	public ArrayList<FreeBoardVO> getJson(@RequestBody FreeBoardVO vo){
 		//@RequestBody: 넘어오는 데이터의 형식을 알맞게 처리해서 VO에 넣어준다(어어어엄청 복잡한 작업이다)

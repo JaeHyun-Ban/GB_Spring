@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.team404.reply.mapper.ReplyMapper">
+ 
+ 	<insert id="replyRegist">
+ 		insert into freereply(bno, rno, reply, replyId, replyPw)
+ 		VALUES(#{bno}, freereply_seq.nextval, #{reply}, #{replyId}, #{replyPw})
+ 	</insert>
+ 	
+ 	<select id="getList" resultType="ReplyVO">
+ 		select * from freereply where bno = #{bno}
+ 	</select>
+ 
+ 
+ 
+ </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
