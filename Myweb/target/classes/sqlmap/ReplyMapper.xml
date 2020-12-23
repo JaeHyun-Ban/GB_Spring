@@ -23,6 +23,10 @@
 		) WHERE rn > (#{cri.pageNum} - 1) * #{cri.amount} AND rn <= #{cri.pageNum} * #{cri.amount}
 		]]>
 	</select>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) as total from freereply where bno = #{bno}
+	</select>
 
 	<!-- 비밀번호 가져오기 -->
 	<select id="getPw" resultType="String">
@@ -39,15 +43,16 @@
 
 	<!-- 댓글 삭제 -->
 	<delete id="delete">
-		delete freereply where rno = #{rno} and replyPw = #{replyPw}
+		delete from FREEREPLY where rno = #{rno}
 	</delete>
 
 	<!-- 비밀번호 검증 -->
 	<select id="pwCheck" resultType="int">
 		select count(*) as result
-		from freereply where rno = #{rno} and replyPw = #{replyPw}
-
+		from FREEREPLY where rno = #{rno} and replyPw = #{replyPw}
 	</select>
+	
+	
 
 </mapper>
   

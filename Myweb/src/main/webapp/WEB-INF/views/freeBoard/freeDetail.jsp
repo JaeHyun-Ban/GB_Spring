@@ -85,6 +85,9 @@
                         </div> 
                         -->
                         </div>
+                        <!-- 게시글 더보기 -->
+                        <button type="button" class="form-control" id="moreList">게시글(더보기)</button>
+                        
                     </div>
                 </div>
             </div>
@@ -161,7 +164,8 @@
 							$("#replyId").val("");
 							$("#replyPw").val("");
 							alert("댓글 등록에 성공했습니다");
-							getList();
+							
+							getList(1, true);//목록호출(페이지번호, 초기화 여부)
 						} else {//등록 실패
 							alert("등록에 실패했습니다. 잠시후에 다시 시도하세요");
 						}
@@ -170,36 +174,51 @@
 						//에러발생시 실행시킬 콜백함수
 						alert(error, "등록실패입니다. 관리자에게 문의하세요");
 					}
-					
-					
 				});
-				
 			}//end regist
 			
-			//페이지넘버
-			var pageNum = 1;
+			//========================================
+			//더보기버튼 핸들러
+			$("#moreList").click(function(){
+				getList(++pageNum);
+			});
 			
+		
 			//페이지넘버선언
 			var pageNum = 1;
+			var strAdd = "";//화면에 그려넣을 태그를 문자열 형태로 추가(누적이 되게 밖에 선언)
 			
 			
 			//목록 요청
 			getList(1);//상세화면 진입시에 리스트 목록을 가져온다, 1번페이지
-			function getList(pageNum){
+			function getList(page, reset){//(페이지번호, strAdd초기화 여부)
 				var bno = "${vo.bno}";
 					
 				//$.ajax() vs $.getJSON
 				//$.ajax(): get, post, put, delete공용적으로 처리하는 제이쿼리기능.
 				//$.getJSON(): 단순히 get방식의 데이터만 얻어올 때 사용하는 기능.
 				$.getJSON(
-					"../reply/getList/" + bno + "/" + pageNum ,
-					function(data){
-						//console.log(data);
+					"../reply/getList/" + bno + "/" + page ,
+					function(dataList){
+						console.log(dataList);
+						//HashMap으로 보내진값 분리
+						var total = dataList.total;//댓글 총 갯수
+						var data = dataList.list;//
+						
+						if(reset == true){//멤버변수를 초기화, 새롭게 데이터를 호출
+							pageNum = 1;
+							strAdd = "";
+						}
+						
+						if(pageNum * 20 >= total){//꺼낸 댓글이 총 댓글 수 보다 크거나 같으면 '더보기'를 숨김
+							$("#moreList").css("display", "none");
+						}
+						
 						if(data.length <= 0){//댓글데이터가 없는경우 함수 종류
 							return;
 						}
 							
-						var strAdd = "";//화면에 그려넣을 태그를 문자열 형태로 추가
+						
 						for(var i = 0; i < data.length; i++){
 							strAdd += "<div class='reply-wrap'>";
 							strAdd += "<div class='reply-image'>";
@@ -318,20 +337,20 @@
 				var rno = $("#modalRno").val();
 				var replyPw = $("#modalPw").val();
 				console.log(rno, replyPw);
-				//비밀번호가 공백인지 확인
-				if(replyPw === ""){
+				
+				if(replyPw === ""){//비밀번호가 공백인지 확인
 					alert("비밀번호를 입력해 주세요");
 					return;
 				}
 				
-				//비동기통신 실행($.ajax)
-				$.ajax({
-					
+				
+				$.ajax({//비동기통신 실행($.ajax)
 					type: "POST",//1. 요청타입
 					url: "../reply/delete", //2.요청주소
 					data: JSON.stringify({"rno":rno, "replyPw":replyPw}),//보낼 파라미터
 					contentType: "application/json; charset=utf-8", //보낼 타입
 					success: function(data){
+						
 						if(data === 1){//삭제 성공
 							alert("댓글이 삭제되었습니다");
 							$("#modalPw").val("");//빈칸만들기
@@ -405,16 +424,9 @@
 				
 				
 			}
-				
-			
-				
-		
-			
-			
-			
-			
+
 		})
-		
+		//이렇게 생성한 JS는 JS파일로 따로 생성해서 불러서 사용하는 형태로 사용한다
 		
 		
 	</script>

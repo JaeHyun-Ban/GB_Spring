@@ -14,6 +14,7 @@ public interface ReplyMapper {
 //	public ArrayList<ReplyVO> getList(int bno);//댓글 리스트 요청
 	public ArrayList<ReplyVO> getList(@Param("bno") int bno, @Param("cri")Criteria cri);//
 	//>마이바티스는 2개이상의 파라미터를 받을 때 @Param으로 이름을 지정해야 합니다.
+	public int getTotal(int bno);//특정 게시글의 총 댓글 수
 
 	public int update(ReplyVO vo); //게시글 수정
 

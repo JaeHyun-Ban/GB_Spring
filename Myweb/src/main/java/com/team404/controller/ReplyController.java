@@ -1,6 +1,7 @@
 package com.team404.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,19 +38,26 @@ public class ReplyController {
 	
 	//목록요청
 	@GetMapping("/getList/{bno}/{pageNum}") //jquery방식_ {bno}를 따로 뽑을 수 있다
-	public ArrayList<ReplyVO> getList(@PathVariable("bno") int bno,
+	public HashMap<String, Object> getList(@PathVariable("bno") int bno,
 									  @PathVariable("pageNum") int pageNum){
-		//1.화면에서 더보기 버튼을 생성하고, 처음실행될 때 pageNum 1번과 해당 게시글 번호를 보냅니다.
-		//2.getList(bno cri)를 받는다
-		//3.mybatis에 매개값이 2개 전달되는 경우는 @Param어노테이션을 사용한다
+		//1. 화면에서 더보기 버튼을 생성하고, 처음실행될 때 pageNum 1번과 해당 게시글 번호를 보냅니다.
+		//2. getList(bno cri)를 받는다
+		//3. mybatis에 매개값이 2개 전달되는 경우는 @Param어노테이션을 사용한다
+		//4. 페이징쿼리구문을 실행
+		//5. 이 게시글에대한 '토탈 게시글' 수
 		Criteria cri = new Criteria(pageNum, 20);//20개의 데이터
-		
 		ArrayList<ReplyVO> list = replyService.getList(bno, cri);
-		//게시글에 대한 total
 		
-		//맵에 키, value로 저장해서 반환
+		//게시글에 대한 total > service
+		int total = replyService.getTotal(bno);
+		System.out.println(total);
 		
-		return list;
+		//맵(Hash Map)에 키, value로 저장해서 반환(여러가지다른 데이터를 반환하고 싶을 때)
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("total", total);
+		
+		return map;
 	}
 	
 	//게시글 수정요청
@@ -79,7 +87,7 @@ public class ReplyController {
 		int result = replyService.pwCheck(vo);
 		
 		if(result == 1) {//성공
-			return 0;
+			return replyService.delete(vo);
 		} else {//실패
 			return -1;
 		}

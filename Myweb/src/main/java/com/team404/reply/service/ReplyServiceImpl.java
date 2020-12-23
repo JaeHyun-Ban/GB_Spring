@@ -26,7 +26,6 @@ public class ReplyServiceImpl implements ReplyService {
 //	}
 	@Override
 	public ArrayList<ReplyVO> getList(int bno, Criteria cri) {
-		
 		return replyMapper.getList(bno, cri);
 	}
 	
@@ -47,8 +46,12 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	@Override
 	public int pwCheck(ReplyVO vo) {
-		
-		return 0;
+		return replyMapper.pwCheck(vo);
+	}
+	
+	@Override
+	public int getTotal(int bno) {
+		return replyMapper.getTotal(bno);
 	}
 }
 

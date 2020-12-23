@@ -21,3 +21,21 @@ CREATE TABLE freereply(
 );
 alter table freereply add CONSTRAINT freereply_pk PRIMARY KEY (rno);
 create SEQUENCE freereply_seq START WITH 1 INCREMENT by 1 NOCACHE;
+/////////////////////////////////////////////////////////////////////
+///회원 테이블
+CREATE TABLE users(
+    userId VARCHAR2(50) NOT NULL,
+    userPw VARCHAR2(50) NOT NULL,
+    userName VARCHAR2(50) NOT NULL,
+    userPhone1 VARCHAR2(50),
+    userPhone2 VARCHAR2(50),
+    userEmail1 VARCHAR2(50),
+    userEmail2 varchar2(50),
+    addrBasic varchar2(300),
+    addrDetail varchar2(300),
+    addrZipNum varchar2(50),
+    regdate date default sysdate
+
+);
+alter table users add CONSTRAINT userid_pk PRIMARY KEY (userId);
+/////////////////////////////////////////////////////////////////////
