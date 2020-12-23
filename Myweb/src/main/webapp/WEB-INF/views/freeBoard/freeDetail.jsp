@@ -34,7 +34,7 @@
                                 <label>내용</label>
                                 <textarea class="form-control" rows="10" name='content' readonly>${vo.content }</textarea>
                             </div>
-
+	
                             <button type="button" class="btn btn-primary" onclick="location.href='freeModify?bno=${vo.bno}'">변경</button>
                             <button type="button" class="btn btn-dark" onclick="location.href='freeList'">목록</button>
                     </form>
@@ -89,8 +89,8 @@
                 </div>
             </div>
         </section>
-        
-	<!-- 모달 -->
+    <!-- https://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp -->
+	<!-- 모달: 예쁘게 만든 경고창(화면에 숨겨놓고 클릭 시 숨긴부분이 나타남), 부트스트랩에서 가져옴 -->
 	<div class="modal fade" id="replyModal" role="dialog">
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
@@ -119,6 +119,15 @@
 
 	
 	<script type="text/javascript">
+		//모달: 부트스트랩지원창
+		//선택자.modal("show"); //open
+		//선택자.modal("hide");//hide
+		/* $("#replyModal").modal("show");//모달창 보이게
+		$("#modalDelBtn").click(function(){
+			$("#replyModal").modal("hide");
+		}) */
+	
+	
 		//1. 제이쿼리 라이브러리 확인
 		//2. 로딩이 끝난 직후 ready함수 안에 작성
 		$(document).ready(function(){
@@ -152,6 +161,7 @@
 							$("#replyId").val("");
 							$("#replyPw").val("");
 							alert("댓글 등록에 성공했습니다");
+							getList();
 						} else {//등록 실패
 							alert("등록에 실패했습니다. 잠시후에 다시 시도하세요");
 						}
@@ -165,19 +175,26 @@
 				});
 				
 			}//end regist
-				
+			
+			//페이지넘버
+			var pageNum = 1;
+			
+			//페이지넘버선언
+			var pageNum = 1;
+			
+			
 			//목록 요청
-			getList();//상세화면 진입시에 리스트 목록을 가져온다
-			function getList(){
+			getList(1);//상세화면 진입시에 리스트 목록을 가져온다, 1번페이지
+			function getList(pageNum){
 				var bno = "${vo.bno}";
 					
 				//$.ajax() vs $.getJSON
 				//$.ajax(): get, post, put, delete공용적으로 처리하는 제이쿼리기능.
 				//$.getJSON(): 단순히 get방식의 데이터만 얻어올 때 사용하는 기능.
 				$.getJSON(
-					"../reply/getList/" + bno,
+					"../reply/getList/" + bno + "/" + pageNum ,
 					function(data){
-						console.log(data);
+						//console.log(data);
 						if(data.length <= 0){//댓글데이터가 없는경우 함수 종류
 							return;
 						}
@@ -191,8 +208,10 @@
 							strAdd += "<div class='reply-content'>";
 							strAdd += "<div class='reply-group'>";
 							strAdd += "<strong class='left'>"+ data[i].replyId +"</strong>";
-							strAdd += "<small class='left'>" + data[i].replydate +"</small>";
-							strAdd += "<a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>";
+							//strAdd += "<small class='left'>" + data[i].replydate +"</small>";
+							strAdd += "<small class='left'>" + timeStamp(data[i].replydate) +"</small>";
+							strAdd += "<a href='" + data[i].rno +"' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>";
+							strAdd += "<a href='" + data[i].rno +"' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>";
 							strAdd += "</div>";
 							strAdd += "<p class='clearfix'>" + data[i].reply +"</p>";
 							strAdd += "</div>";
@@ -204,13 +223,190 @@
 						
 				);
 			} //end getList
+			
+			//수정삭제 모달창
+			/*
+			'에이젝스가 순서를 보장하지 않기 때문에', 실제 이벤트 선언이 먼저 실행이 된다.
+			그렇다면 화면에 댓글관련 창은 아무것도 없는 형태이므로, 일반클릭이벤트는 동작하지 않는다
+			이때, 이미 존재하는 태그 replyList(부모)에 이벤트를 등록하고 이벤트를 전파시켜서 사용하는 위임방식을 반드시 사용해야한다
+			*/
+			$("#replyList").on("click", "a", function(){
+				event.preventDefault();//고유이벤트(a)를 중단 > 필수(중요)
+				//1. 수정버튼 vs삭제버튼 인지 확인
+				//현재 클릭한 a태그 href안에있는 rno번호를 ->모달창의 hidden태그로 옴겨보세요
+				//제이쿼리 hasClass() 함수를 이용해서 처리...
+				
+				console.log($(this));//$(this)는 jquery기능을 바로 사용할 수 있도록 한다
+				var rno = $(this).attr("href");
+				//<input type="hidden" id="modalRno">  >>> 히든태그
+				$("#modalRno").val(rno);
+				
+				if($(this).hasClass("replyModify")){//event.target.classList.contains("replyModify")
+					//수정을 눌렀을 때, 수정창 형식으로 변경
+					$(".modal-title").html("댓글수정");//삭제와 반대로 숨김/보임 처리 진행
+					$("#modalReply").css("display", "inline");
+					$("#modalModBtn").css("display", "inline");
+					$("#modalDelBtn").css("display", "none");
+					
+					$("#replyModal").modal("show");
+				
+				} else { 
+					//삭제를 클릭시 삭제창 형식으로 변경
+					$(".modal-title").html("댓글삭제");
+					$("#modalReply").css("display", "none");//textarea숨김처리
+					$("#modalModBtn").css("display", "none");//수정버튼 숨김
+					$("#modalDelBtn").css("display", "inline");//삭제버튼 보임
+					
+					$("#replyModal").modal("show");
+				}
+			});//모달 end
+			
+			//수정 이벤트
+			$("#modalModBtn").click(function(){//수정하기 버튼 클릭 이벤트
+				/*
+				1. 모달창에 rno, reply, replyPw값을 얻습니다.
+				2. ajax함수를 이용해서 POST방식으로 reply/update 요청, 필요한값은 JSON형식으로 처리
+				3. 서버에서는 요청을 받아서 비밀번호를 확인하고, 비밀번호가 맞다면 업데이트를 진행하면 됩니다.
+				4. 만약 비밀번호가 틀렸다면 0을 반환해서 `비밀번호가 틀렸습니다` 경고창을 띄울것
+				5. 업데이트가 성공적으로 진행됬다면 modal창의 값을 공백으로 초기화시키세요
+				*/
+
+				var rno = $("#modalRno").val();//댓글 번호
+				var reply = $("#modalReply").val();//댓글 내용
+				var replyPw = $("#modalPw").val();//댓글 비밀번호
+				console.log(rno, reply, replyPw);
+				
+				//값들이 공백인지 확인
+				if(rno === "" || reply === "" || replyPw === ""){
+					alert("내용, 비밀번호를 작성하세요");
+					return;//종료
+				}
+				
+				//비동기 통신
+				$.ajax({
+					type: "POST", //요청방식(중요한 파라미터)
+					url: "../reply/update", //요청주소
+					data: JSON.stringify({"rno": rno, "reply": reply, "replyPw":replyPw}),
+					contentType: "application/json; charset=utf-8", //보낼 타입(중요중요중요)
+					success: function(data){//성공시(받는값)
+						if(data === 1){//성공
+							alert("업데이트 처리 되었습니다");
+							//공백처리
+							$("#modalReply").val("");
+							$("#modalPw").val("");
+							$("#replyModal").modal("hide");//모달창 내리기(숨기기, 중요!)
+							getList();//목록 재호출
+						}else {
+							alert("비밀번호를 확인하세요");
+							$("#modalPw").val("");//비밀번호 창 비우기
+						}
+
+					},
+					error: function(error){}
+					
+				})//ajax end
+			})//modalModBtn end
+			
+			//삭제이벤트
+			$("#modalDelBtn").click(function(){
+				/*
+				1. 모달창에 rno, replyPw값을 얻습니다.
+				2. ajax함수를 이용해서 POST방식으로 reply/delete 요청, 필요한 값은 JSOn형식으로 처리
+				3. 서버에서는 요청을 받아서 비밀번호를 확인하고, 비밀번호가 일치한다면 삭제를 진행
+				4. 비밀번호가 틀렸다면, 0을 반환해서 경고창을 띄워준다
+				*/
+				var rno = $("#modalRno").val();
+				var replyPw = $("#modalPw").val();
+				console.log(rno, replyPw);
+				//비밀번호가 공백인지 확인
+				if(replyPw === ""){
+					alert("비밀번호를 입력해 주세요");
+					return;
+				}
+				
+				//비동기통신 실행($.ajax)
+				$.ajax({
+					
+					type: "POST",//1. 요청타입
+					url: "../reply/delete", //2.요청주소
+					data: JSON.stringify({"rno":rno, "replyPw":replyPw}),//보낼 파라미터
+					contentType: "application/json; charset=utf-8", //보낼 타입
+					success: function(data){
+						if(data === 1){//삭제 성공
+							alert("댓글이 삭제되었습니다");
+							$("#modalPw").val("");//빈칸만들기
+							$("#replyModal").modal("hide");//숨기고
+							getList();//리스트 다시 불러옴
+						} else if(data === 0){ //실패
+							alert("삭제시 에러가 발생했습니다. 관리자에게 문의하세요");
+						} else {//pw에러
+							alert("비밀번호를 확인하세요");
+						}
+					},
+					error: function(status, error){}
+					
+				})
+			})
+			
+			
+			
 				
 			//javaScript에서 날짜 포맷팅
-			function timeStamp(millis){
+			/* function timeStamp(millis){
+				//https://nowonbun.tistory.com/566
 				//1시간 기준으로 방금전 or xx시간 or 1일 기준으로 날짜 출력
+				var now = new Date().getTime();
+				console.log(now);
+				console.log((now - millis) / (60 * 60 * 1000));
+				var gap = (now - millis) / (60 * 60 * 1000);
+				if(gap < 1) { //1시간 미만
+					return "방금전";
+				} else if(gap > 24) { //1일 이상
+					return parseInt(gap/24) + "일";
+				} else {
+					return parseInt(gap) + "시간 전"; //1시간 이상 1일 미만
+				}
+				
+				//parseInt로 실수를 잘라내자
+			} */
+			
+			//강사님
+			function timeStamp(millis){
+				//https://nowonbun.tistory.com/566
+				//1시간 기준으로 방금전 or xx시간 or 1일 기준으로 날짜 출력
+				var now = new Date(); //현재시간
+				var gap = now.getTime() - millis; //현재시간밀리초 - 작성일 밀리초
+				
+				var tume;//리턴할 문자열
+				if(gap < 1000 * 60 * 60 * 24) { //1일 미만인 경우
+					
+					if(gap < 1000 * 60 * 60){ //1시간 미만인 경우
+						time = "방금전";
+					} else {//1시간 ~ 1일미만
+						time = parseInt(gap / (1000 * 60 * 60)) + "시간전";
+					}
+					
+				} else {//1시간 미만인 경우
+					var date = new Date(millis);//밀리초기준의 날짜
+					var year = date.getFullYear();//년
+					var month = date.getMonth() + 1; //월
+					var day = date.getDate(); //일
+					var hour = date.getHours();//시
+					var minute = date.getMinutes();//분
+					var second = date.getSeconds();//초
+					
+					time = year + "년" + month + "월" + day + "일" + 
+								(day < 10 ? "0" + hour : hour) + "시" + 
+								(minute < 10 ? "0" + minute : minute) + "분" + 
+								(second < 10 ? "0" + second : second) + "초";
+					console.log(time);
+				}
+				return time;
+				
+				
 			}
 				
-				
+			
 				
 		
 			

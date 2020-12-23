@@ -2,21 +2,54 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="com.team404.reply.mapper.ReplyMapper">
- 
- 	<insert id="replyRegist">
- 		insert into freereply(bno, rno, reply, replyId, replyPw)
- 		VALUES(#{bno}, freereply_seq.nextval, #{reply}, #{replyId}, #{replyPw})
- 	</insert>
- 	
- 	<select id="getList" resultType="ReplyVO">
- 		select * from freereply where bno = #{bno}
- 	</select>
- 
- 
- 
- </mapper>
+
+<mapper namespace="com.team404.reply.mapper.ReplyMapper">
+
+	<insert id="replyRegist">
+		insert into freereply(bno, rno, reply, replyId, replyPw)
+		VALUES(#{bno}, freereply_seq.nextval, #{reply}, #{replyId}, #{replyPw})
+	</insert>
+
+	<select id="getList" resultType="ReplyVO">
+		<!-- select * from freereply where bno = #{bno} order by rno -->
+		<![CDATA[
+		SELECT *
+		FROM (SELECT ROWNUM as rn,
+					a.*
+		FROM (SELECT *
+			FROM freereply
+			WHERE bno = 303
+			ORDER BY rno DESC) a
+		) WHERE rn > (#{cri.pageNum} - 1) * #{cri.amount} AND rn <= #{cri.pageNum} * #{cri.amount}
+		]]>
+	</select>
+
+	<!-- 비밀번호 가져오기 -->
+	<select id="getPw" resultType="String">
+		select replyPw from freereply where rno = #{rno}
+	</select>
+
+	<!-- 댓글 수정 -->
+	<update id="update">
+		UPDATE freereply
+		SET reply = #{reply},
+		updatedate = sysdate
+		where rno = #{rno} and replyPw = #{replyPw}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<delete id="delete">
+		delete freereply where rno = #{rno} and replyPw = #{replyPw}
+	</delete>
+
+	<!-- 비밀번호 검증 -->
+	<select id="pwCheck" resultType="int">
+		select count(*) as result
+		from freereply where rno = #{rno} and replyPw = #{replyPw}
+
+	</select>
+
+</mapper>
   
   
   
