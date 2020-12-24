@@ -22,8 +22,16 @@
                             <button type="button" class="btn btn-info btn-block">로그인</button>
                             <button type="button" class="btn btn-primary btn-block">회원가입</button>
                          </div>
-                    </form>                
+                    </form>      
                 </div>
             </div>
         </div>
     </section>
+	
+	<!-- 회원가입 msg -->
+	<script>
+		var msg = "${msg}";
+		if(msg != ""){
+			alert(msg);
+		}
+	</script>

@@ -12,7 +12,7 @@ import com.team404.freeboard.mapper.FreeBoardMapper;
 @Service("freeBoardService") //이 패키지가 읽히고 있는 지 확인(component scan)
 public class FreeBoardServiceImpl implements FreeBoardService {
 	
-	@Autowired //autowired로 잡아주기....싯팟!
+	@Autowired //autowired로 잡아주기
 	private FreeBoardMapper freeBoardMapper;
 	
 	@Override

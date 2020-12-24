@@ -18,7 +18,7 @@ import com.team404.command.FreeBoardVO;
 public class RestBasicController {
 
 	// 1. RestController는 기본적으로 return값이 리졸버 뷰로 전달되는게 아니라, 요청된 주소로 반환된다.
-	// produces는 타입을 지정ㅊ해주면, 해당 타입으로 사용자에게 응답하겠다는 뜻이다
+	// produces는 타입을 지정해주면, 해당 타입으로 사용자에게 응답하겠다는 뜻이다
 	@GetMapping(value = "/getText", produces = "text/plain; charset=utf-8")
 	public String getText() {
 		// 보내는 곳과 받는곳 서로 주고받는 자료형의 타입을 몰라서 보내도 받지를 못하는 것이다
