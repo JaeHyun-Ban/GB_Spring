@@ -13,7 +13,7 @@
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.2.11.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.aspectj-version>1.9.5</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 
@@ -36,13 +36,24 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
+	
+	
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+
+		<!-- AOP를 자바클래스에 적용해주는 라이브러리 라이브러리 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
 
 		<!-- Logging -->
 		<dependency>
@@ -196,7 +207,7 @@
 			<version>3.0.8</version>
 		</dependency>
 
-		<!-- jackson-databind(JSON): REST API로 보내는 객체를 자동으로JSON형으로 변환시켜줌-->
+		<!-- jackson-databind(JSON): REST API로 보내는 객체를 자동으로JSON형으로 변환시켜줌 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>

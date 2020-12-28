@@ -83,8 +83,9 @@
 								<li><a href="#" data-page="${pageVO.endPage + 1 }">다음</a></li>
 							</c:if>
 						</ul>
-						<button type="button" class="btn btn-info"
-							onclick="location.href='freeRegist'">글쓰기</button>
+						<c:if test="${sessionScope.userVO != null }"><!-- 로그인 중에만 보이도록 처리 -->
+							<button type="button" class="btn btn-info" onclick="location.href='freeRegist'">글쓰기</button>		
+						</c:if>
 					</div>
 
 					<!-- form형식으로 보낼 때 hidden으로 값을 숨겨서 보낼 수 있다 -->

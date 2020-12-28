@@ -28,7 +28,10 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<!-- 경로 수정 -->
-			<param-value>/WEB-INF/springconfig/servlet-context.xml</param-value>
+			<param-value>
+				/WEB-INF/springconfig/servlet-context.xml
+				/WEB-INF/springconfig/interceptor-context.xml <!-- interceptor추가 -->
+			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

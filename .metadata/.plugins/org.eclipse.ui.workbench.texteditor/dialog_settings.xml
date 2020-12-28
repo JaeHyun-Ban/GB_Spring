@@ -6,8 +6,14 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="$(vo"/>
+		<item key="selection" value="비밀번호"/>
 		<list key="findhistory">
+			<item value="비밀번호"/>
+			<item value="비밀번호확인"/>
+			<item value="회원가입"/>
+			<item value="idCheckBtn"/>
+			<item value="idCheckBtn&apos;\"/>
+			<item value="idCheckBtn&apos;"/>
 			<item value="$(vo"/>
 			<item value="System.out.println(c.getVo().get(0).getId());"/>
 		</list>

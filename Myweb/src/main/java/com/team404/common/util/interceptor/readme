@@ -1,0 +1,20 @@
+햇갈린다면 자료의 이미지를 찾아서 확인해보자
+
+로그인 이후 권한 처리를 해주는 인터셉터 파일
+- 생성 후 springconfig에 inerceptor설정파일(xml)을 생성해준다
+- web.xml에 servlet-context.xml옆에 추가로 생성해 주기
+
+
+//preHandler(
+UserAuthHandler.java
+- 회원 페이지 관련 요청이 들어올 때 이용할 인터셉터
+
+BoardAuthHandler.java
+- 게시판 관련 요청이 들어올 때 이용할 인터셉터(로그인 유무 관련)
+
+/////////////////////////////////////////////////
+//postHandler
+Contorller -> DispatcherServlet으로 돌아가기 전에 처리해주는 Handler
+
+UserLoginSuccessHandler.java
+- 로그인 이후에 실행되는 핸들러

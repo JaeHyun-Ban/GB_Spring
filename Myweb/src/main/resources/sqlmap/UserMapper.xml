@@ -7,7 +7,7 @@
 	
 	<!-- 중복체크 -->
 	<select id="idCheck" resultType="int">
-		SELECT count(userid) as result FROM users WHERE userid = #{userId}
+		SELECT count(userid) as result FROM users WHERE userId = #{userId}
 	</select>
 	
 	<insert id="join">
@@ -15,6 +15,81 @@
 		values(#{userId}, #{userPw}, #{userName}, #{userPhone1}, #{userPhone2}, #{userEmail1}, #{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum})
 	</insert>
 
+	<select id="login" resultType="UserVO">
+		SELECT * FROM users WHERE userId = #{userId} and userPw = #{userPw}	
+	</select>
+	
+	<!-- 반환타입을 resultMap으로 사용가능:  -->
+	<!-- 조인의 결과로 1:N관계의 형태를 map으로 처리하는 방식에서 resultMap속성을 이용한다 -->
+	<select id="getInfo" resultMap="usersInfo">
+		select userid,
+		       username,
+		       userphone1,
+		       userphone2,
+		       useremail1,
+		       useremail2,
+		       addrbasic,
+		       addrdetail,
+		       addrzipnum,
+		       f.bno,
+		       f.title,
+		       f.regdate
+		from users u left OUTER join freeboard f
+		on u.userid = f.writer
+		where u.userid = #{userId}
+		order by f.bno desc
+	</select>
+	
+	<!-- type속성에는 실제클래스의 경로, id속성: resultMap의 이름 -->
+	<!-- id는 위의 select문을 참조하라는 뜻이다 -->
+	<resultMap type="UserVO" id="usersInfo">
+		<!-- property: VO객체의 변수명 -->
+		<result property="userId" column="USERID"/>
+		<result property="userName" column="USERNAME"/>
+		<result property="userPhone1" column="USERPHONE1"/>
+		<result property="userPhone2" column="USERPHONE2"/>
+		<result property="userEmail1" column="USEREMAIL1"/>
+		<result property="userEmail2" column="USEREMAIL2"/>
+		<result property="addrBasic" column="ADDRBASIC"/>
+		<result property="addrDetail" column="ADDRDETAIL"/>
+		<result property="addrZipNum" column="ADDRZIPNUM"/>
+		
+		<!-- 위의 result를 Map으로 묶어줌 -->
+		<collection property="list" resultMap="userBoardList" />
+	</resultMap>
+	
+	<resultMap type="FreeBoardVO" id="userBoardList">
+		<result property="bno" column="BNO"/>
+		<result property="title" column="TITLE"/>
+		<result property="regdate" column="REGDATE"/>
+		
+	
+	</resultMap>
+	
+	
+	
 </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   

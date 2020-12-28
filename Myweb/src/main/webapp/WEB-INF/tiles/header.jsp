@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 	<header>
         <div class="container-fluid">
@@ -34,10 +37,17 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">로그인
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="${pageContext.request.contextPath }/user/userJoin"><span class="glyphicon glyphicon-user"></span>Join</a></li>
-                                        <li><a href="${pageContext.request.contextPath }/user/userLogin"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-                                        <li><a href="${pageContext.request.contextPath }/user/userMypage"><span class="glyphicon glyphicon-user"></span>MyPage</a></li>
-                                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                                    	<!-- 로그인 유무에 따라 비활성 처리 -->
+                                    	<c:choose>
+                                    	<c:when test="${sessionScope.userVO == null }">
+                                        	<li><a href="${pageContext.request.contextPath }/user/userJoin"><span class="glyphicon glyphicon-user"></span>Join</a></li>
+                                        	<li><a href="${pageContext.request.contextPath }/user/userLogin"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                        	<li><a href="${pageContext.request.contextPath }/user/userMypage"><span class="glyphicon glyphicon-user"></span>MyPage</a></li>
+                                        	<li><a href="${pageContext.request.contextPath }/user/userLogout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                                        </c:otherwise>
+                                        </c:choose>
                                     </ul>
                                 </li>
                             </ul>
