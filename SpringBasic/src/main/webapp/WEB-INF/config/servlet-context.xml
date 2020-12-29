@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans 
+<beans:beans
 	xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
@@ -8,36 +8,47 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-	
-	
+
+
 	<!-- 1. 핸들러 어댑터, 핸들러맵핑 관련 작업을 내부적으로 처리, mvc에서 제공하는 어노테이션을 사용하도록 해줌 -->
 	<annotation-driven />
 
-	<!-- 정적파일 매핑 연결 -->	
+	<!-- 정적파일 매핑 연결 -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- view합성기(viewResolver) -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
-	
+
+
 	<!-- 자바파일이 실제로 읽혀들어가는가를 확인(src/main/java 패키지 경로를 작성해준다) -->
 	<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
-	<!-- @Controller, @Component, @Repository, @Service 어노테이션이 부착되있는 클래스를 bean으로 생성합니다 -->
-	<context:component-scan base-package="com.simple.controller" />
-	
-	<context:component-scan base-package="com.simple.service" /> <!-- 3nd방법 -->
-	<context:component-scan base-package="com.simple.dao" />
+	<!-- @Controller, @Component, @Repository, @Service 어노테이션이 부착되있는 클래스를 bean으로 
+		생성합니다 -->
+	<context:component-scan
+		base-package="com.simple.controller" />
+
+	<context:component-scan
+		base-package="com.simple.service" /> <!-- 3nd방법 -->
+	<context:component-scan
+		base-package="com.simple.dao" />
 	<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
-	
+
 	<!-- 서비스 클래스를 bean으로 생성 -->
-	<!-- <beans:bean id="service" class="com.simple.service.ScoreServiceImpl" /> -->
-	
-	
-	
-	
+	<!-- <beans:bean id="service" class="com.simple.service.ScoreServiceImpl" 
+		/> -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대업로드 가능한 크기(반드시 지정) -->
+		<beans:property name="maxUploadSize" value="52428800" />
+		<!-- 파일 인코딩 설정 -->
+		<beans:property name="defaultEncoding" value="UTF-8" />
+	</beans:bean>
+
+
+
 </beans:beans>
 
 

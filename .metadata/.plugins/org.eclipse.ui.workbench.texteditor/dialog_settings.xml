@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="비밀번호"/>
+		<item key="selection" value="lom"/>
 		<list key="findhistory">
+			<item value="lom"/>
+			<item value="log4"/>
 			<item value="비밀번호"/>
 			<item value="비밀번호확인"/>
 			<item value="회원가입"/>
