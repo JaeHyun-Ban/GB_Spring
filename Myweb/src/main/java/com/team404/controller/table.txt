@@ -44,11 +44,12 @@ alter table users add CONSTRAINT userid_pk PRIMARY KEY (userId);
 CREATE TABLE snsboard(
     bno number(10) not null,
     writer varchar2(100) not null,
-    content varchar2(2000) not null,
+    content varchar2(2000),
     uploadpath varchar2(200) not null,
     filename varchar2(50) not null,
     flierealname varchar2(50) not null,
-    regdate date default sysdate
+    regdate date default sysdate,
+    fileloca varchar2(50) not null
 );
 ALTER TABLE snsboard ADD CONSTRAINT snsboard_pk PRIMARY KEY (bno);
 CREATE SEQUENCE snsboard_seq INCREMENT BY 1 START WITH 1 NOCACHE;

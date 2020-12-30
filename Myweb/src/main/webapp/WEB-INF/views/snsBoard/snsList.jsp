@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     
     <style type="text/css">
 		section {
@@ -52,8 +53,9 @@
 					</div>
 
 
-					<!-- 파일 업로드 폼 끝 -->
+					<!-- 파일 업로드 폼 끝(여기 반복) -->
 					<div id="contentDiv">
+					<!-- 반복용 -->
 					<div class="title-inner">
 						<!--제목영역-->
 						<div class="profile">
@@ -82,6 +84,7 @@
 						<a href="##"><i class="glyphicon glyphicon-comment"></i>댓글달기</a> 
 						<a href="##"><i class="glyphicon glyphicon-remove"></i>삭제하기</a>
 					</div>
+					
 					</div>
 				</div>
 				<!--우측 어사이드-->
@@ -130,12 +133,81 @@
 				
 				//파일비동기 전송시 반드시 필요한 FormData()객체 생성
 				var data = $("#file");
-				console.log(data);
+				//console.log(data);
 				console.log(data[0]);
-				console.log(data[0].files);//파일태그에 담긴 파일을 확인가능하는 키값(files)
-				console.log(data[0].files[0]);
+				//console.log(data[0].files);//파일태그에 담긴 파일을 확인가능하는 키값(files)
+				console.log(data[0].files[0]);//전송해야하는 파일데이터의 정보
 				
-			}
+				var content = $("#content").val();
+				var formData = new FormData();
+				formData.append("file", data[0].files[0]);//formData.append(키, 값);, file이름으로 file데이터 저장
+				formData.append("content", content);
+				
+				$.ajax({
+					type: "POST",
+					url: "upload",
+					//processData, contetnType이 있어야 데이터가 전송된다
+					processData: false, //폼형식이 '&변수=값'의 형태로 변경되는 것을 막는다
+					contentType: false, //false로 지정하여 기본 "multipart/form-data"형식으로 선언된다
+					data: formData,//폼데이터 객체
+					success: function(result){
+						if(result === 'success'){
+							$("#file").val("");//파일데이터 초기화
+							$("#content").val("");//내용데이터 초기화
+							$(".fileDiv").css("display", "none");//숨겨주기
+						} else {
+							alert("업로드에 실패했습니다. 관리자에게 문의해주세요");
+						}
+					},
+					error: function(status, error){}
+				})
+			}; //등록 end
+			
+			//리스트 작업
+			getList();//호출
+			function getList(){
+				$.getJSON("getList", function(list){
+					console.log(list);
+					//서버에서 비동기요청을 받아서 getList()를 이용해서 데이터를 전부 조회
+					//화면에 그리는 작업을 처리
+					var str = "";
+					for(var i = 0; i < list.length; i++){
+						
+						str += "<div class='title-inner'>";
+						str += "<div class='profile'>";
+						str += "<img src='../resources/img/profile.png'>";
+						str += "</div>";
+						str += "<div class='title'>";
+						str += "<p>" + list[i].writer + "</p>";
+						str += "<small>" + list[i].regdate + "</small>";
+						//파일 다운로드창 생성(download/ + 경로 생성 -> 컨트롤러 처리)
+						str += "<a href='download/" + list[i].fileLoca + "/" + list[i].fileName + "'>이미지 다운로드</a>";
+						//파일 다운로드 끝
+						str += "</div>";
+						str += "</div>";
+						str += "<div class='content-inner'>";
+						str += "<!--내용영역-->";
+						str += "<p>" + (list[i].content == null ? '' : list[i].content) + "</p>";
+						str += "</div>";
+						str += "<div class='image-inner'>";
+						str += "<img src=display/" + list[i].fileLoca + "/" + list[i].fileName + ">";
+						str += "</div>";
+						str += "<div class='like-inner'>";
+						str += "<img src='../resources/img/icon.jpg'> <span>522</span>";
+						str += "</div>";
+						str += "<div class='link-inner'>";
+						str += "<a href='##'><i class='glyphicon glyphicon-thumbs-up'></i>좋아요</a>";
+						str += "<a href='##'><i class='glyphicon glyphicon-comment'></i>댓글달기</a> ";
+						str += "<a href='##'><i class='glyphicon glyphicon-remove'></i>삭제하기</a>";
+						str += "</div>";
+						
+					}//end for
+					//$("#contentDiv").append(str);
+					$("#contentDiv").html(str);
+					
+				});
+			}//end getList
+			
 			
 		})
 	</script>
